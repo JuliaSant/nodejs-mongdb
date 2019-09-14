@@ -1,0 +1,37 @@
+<!Doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=devide-width, initial-scale=1.0,">
+    <link href="styles.css" rel="stylesheet">
+    <title>Lista de tarefas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Coisa para fazer</h1>
+    <form action="/todos" method="post">
+    <input type="text" name="desc">
+    <button type="submit">Adicionar</button>
+    </form>
+    <ul>
+    {{#todos}}
+       <li>
+        <form action="/todos/{{_id}}/completed" method="post">
+            {{desc}} - {{done}} <button type="submit">Feito</button>
+        </form>
+       </li>
+    {{/todos}}
+    </ul>
+
+    <h3>Concluidos!</h3>
+    <ul>
+        {{#doneTodos}}
+             <li>
+        <form action="/todos/{{_id}}/completed" method="post">
+            {{desc}} - {{done}} <button type="submit">Não fiz</button>
+        </form>
+       </li>
+        {{/doneTodos}}
+    </ul>
+    </body>
+</html>
